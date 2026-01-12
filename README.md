@@ -140,7 +140,7 @@ CONFIG_AUTH_BATTERY=y
 
 ### 1. Initialize LineageOS Build Environment
 ```bash
-repo init -u https://github.com/LineageOS/android.git -b lineage-22.0 --git-lfs
+repo init -u https://github.com/LineageOS/android.git -b lineage-23.0 --git-lfs
 repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 ```
 

@@ -27,7 +27,7 @@ sudo apt-get install -y bc bison build-essential ccache curl flex \
 ```bash
 mkdir -p ~/android/lineage
 cd ~/android/lineage
-repo init -u https://github.com/LineageOS/android.git -b lineage-22.0 --git-lfs
+repo init -u https://github.com/LineageOS/android.git -b lineage-23.0 --git-lfs
 ```
 
 ### Create Local Manifest
@@ -39,31 +39,31 @@ Create `.repo/local_manifests/dizi.xml`:
     <project name="YourGithub/android_device_xiaomi_dizi" 
              path="device/xiaomi/dizi" 
              remote="github" 
-             revision="lineage-22.0" />
+             revision="lineage-23.0" />
     
     <!-- Vendor Blobs -->
     <project name="YourGithub/vendor_xiaomi_dizi" 
              path="vendor/xiaomi/dizi" 
              remote="github" 
-             revision="lineage-22.0" />
+             revision="lineage-23.0" />
     
     <!-- Kernel -->
     <project name="LineageOS/android_kernel_xiaomi_sm7435" 
              path="kernel/xiaomi/sm7435" 
              remote="github" 
-             revision="lineage-22.0" />
+             revision="lineage-23.0" />
     
     <!-- Kernel Modules -->
     <project name="LineageOS/android_kernel_xiaomi_sm7435-modules" 
              path="kernel/xiaomi/sm7435-modules" 
              remote="github" 
-             revision="lineage-22.0" />
+             revision="lineage-23.0" />
     
     <!-- Hardware Xiaomi -->
     <project name="LineageOS/android_hardware_xiaomi" 
              path="hardware/xiaomi" 
              remote="github" 
-             revision="lineage-22.0" />
+             revision="lineage-23.0" />
 </manifest>
 ```
 

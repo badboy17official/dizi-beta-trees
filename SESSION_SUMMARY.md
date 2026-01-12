@@ -3,7 +3,7 @@
 **Date:** January 12, 2026  
 **Device:** Xiaomi Dizi (POCO Pad) - Model 2405CPCFBG  
 **Platform:** Qualcomm SM7435P (Parrot)  
-**Target:** LineageOS 22.0 (Android 15)
+**Target:** LineageOS 23.0 (Android 15)
 
 ---
 
@@ -278,23 +278,23 @@ Updated SELinux policies for Dizi-specific features:
        <project name="M0Rf30/android_device_xiaomi_dizi" 
                 path="device/xiaomi/dizi" 
                 remote="github" 
-                revision="lineage-22.0" />
+                revision="lineage-23.0" />
        <project name="M0Rf30/vendor_xiaomi_dizi" 
                 path="vendor/xiaomi/dizi" 
                 remote="github" 
-                revision="lineage-22.0" />
+                revision="lineage-23.0" />
        <project name="M0Rf30/android_kernel_xiaomi_sm7435" 
                 path="kernel/xiaomi/sm7435" 
                 remote="github" 
-                revision="lineage-22.0" />
+                revision="lineage-23.0" />
        <project name="M0Rf30/android_kernel_xiaomi_sm7435-modules" 
                 path="kernel/xiaomi/sm7435-modules" 
                 remote="github" 
-                revision="lineage-22.0" />
+                revision="lineage-23.0" />
        <project name="M0Rf30/android_kernel_xiaomi_sm7435-devicetrees" 
                 path="kernel/xiaomi/sm7435-devicetrees" 
                 remote="github" 
-                revision="lineage-22.0" />
+                revision="lineage-23.0" />
    </manifest>
    EOF
    
@@ -385,7 +385,7 @@ Remaining 5% is kernel repo integration and initial build testing.
 **Source DTS:** `01_dtbdump_Qualcomm_Technologies,_Inc._Parrot_QRD,_DIZI_based_on_SM7435P.dts` (11,941 lines)  
 **Base Reference Device:** Xiaomi Garnet (Redmi Note 13 Pro 5G)  
 **Kernel Version:** Linux 5.15 (GKI - Generic Kernel Image)  
-**Android Version:** 15 (LineageOS 22.0)
+**Android Version:** 15 (LineageOS 23.0)
 
 **Key Documentation Files:**
 - `README.md` - Project overview (300+ lines)

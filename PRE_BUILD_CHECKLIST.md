@@ -53,7 +53,7 @@ cd /home/gianluca/android_device_xiaomi_dizi
 
 # Initialize git if not already done
 git init
-git checkout -b lineage-22.0
+git checkout -b lineage-23.0
 
 # Add all files
 git add .
@@ -84,7 +84,7 @@ EOF
 git add .gitignore
 
 # Commit
-git commit -m "dizi: Initial LineageOS 22.0 device tree for POCO Pad
+git commit -m "dizi: Initial LineageOS 23.0 device tree for POCO Pad
 
 Device specifications:
 - Codename: dizi
@@ -113,7 +113,7 @@ Based on: LineageOS device tree for Xiaomi Garnet (Redmi Note 13 Pro 5G)
 
 # Add remote and push
 git remote add origin https://github.com/M0Rf30/android_device_xiaomi_dizi.git
-git push -u origin lineage-22.0
+git push -u origin lineage-23.0
 ```
 
 ### 2. Push Vendor Blobs to GitHub
@@ -122,7 +122,7 @@ git push -u origin lineage-22.0
 cd /home/gianluca/vendor_xiaomi_dizi
 
 git init
-git checkout -b lineage-22.0
+git checkout -b lineage-23.0
 git add .
 
 # Create .gitignore
@@ -153,7 +153,7 @@ LineageOS HAL implementations and not included here.
 "
 
 git remote add origin https://github.com/M0Rf30/vendor_xiaomi_dizi.git
-git push -u origin lineage-22.0
+git push -u origin lineage-23.0
 ```
 
 ### 3. Fork and Update Kernel Repositories
@@ -171,7 +171,7 @@ cd ~/kernel_work
 git clone https://github.com/M0Rf30/android_kernel_xiaomi_sm7435.git
 cd android_kernel_xiaomi_sm7435
 
-git checkout -b lineage-22.0-dizi
+git checkout -b lineage-23.0-dizi
 
 # Copy kernel config
 cp /home/gianluca/android_device_xiaomi_dizi/dizi_GKI.config \
@@ -194,7 +194,7 @@ Based on: parrot_GKI.config
 Device: Xiaomi Dizi (POCO Pad)
 "
 
-git push origin lineage-22.0-dizi
+git push origin lineage-23.0-dizi
 ```
 
 #### C. Update Kernel Modules (No Changes Needed)
@@ -209,8 +209,8 @@ ls -la qcacld-3.0/.qca6750/
 # Should show qca_cld3_qca6750.ko and related files
 
 # No changes needed, just push the fork
-git checkout -b lineage-22.0
-git push origin lineage-22.0
+git checkout -b lineage-23.0
+git push origin lineage-23.0
 ```
 
 #### D. Update Kernel Device Trees
@@ -220,7 +220,7 @@ cd ~/kernel_work
 git clone https://github.com/M0Rf30/android_kernel_xiaomi_sm7435-devicetrees.git
 cd android_kernel_xiaomi_sm7435-devicetrees
 
-git checkout -b lineage-22.0-dizi
+git checkout -b lineage-23.0-dizi
 
 # Copy device tree files
 cp /home/gianluca/android_device_xiaomi_dizi/kernel_dtsi/dizi-sm7435.dtsi \
@@ -291,7 +291,7 @@ Device tree files:
 Device: Xiaomi Dizi (POCO Pad, model 2405CPCFBG)
 "
 
-git push origin lineage-22.0-dizi
+git push origin lineage-23.0-dizi
 ```
 
 ---
@@ -311,31 +311,31 @@ cat > .repo/local_manifests/dizi.xml << 'EOF'
     <project name="M0Rf30/android_device_xiaomi_dizi" 
              path="device/xiaomi/dizi" 
              remote="github" 
-             revision="lineage-22.0" />
+             revision="lineage-23.0" />
     
     <!-- Vendor blobs -->
     <project name="M0Rf30/vendor_xiaomi_dizi" 
              path="vendor/xiaomi/dizi" 
              remote="github" 
-             revision="lineage-22.0" />
+             revision="lineage-23.0" />
     
     <!-- Kernel -->
     <project name="M0Rf30/android_kernel_xiaomi_sm7435" 
              path="kernel/xiaomi/sm7435" 
              remote="github" 
-             revision="lineage-22.0-dizi" />
+             revision="lineage-23.0-dizi" />
     
     <!-- Kernel modules -->
     <project name="M0Rf30/android_kernel_xiaomi_sm7435-modules" 
              path="kernel/xiaomi/sm7435-modules" 
              remote="github" 
-             revision="lineage-22.0" />
+             revision="lineage-23.0" />
     
     <!-- Kernel device trees -->
     <project name="M0Rf30/android_kernel_xiaomi_sm7435-devicetrees" 
              path="kernel/xiaomi/sm7435-devicetrees" 
              remote="github" 
-             revision="lineage-22.0-dizi" />
+             revision="lineage-23.0-dizi" />
 </manifest>
 EOF
 ```
@@ -369,7 +369,7 @@ Dependencies file not found, bailing out.
 ============================================
 PLATFORM_VERSION_CODENAME=VanillaIceCream
 PLATFORM_VERSION=15
-LINEAGE_VERSION=22.0-20260112-UNOFFICIAL-dizi
+LINEAGE_VERSION=23.0-20260112-UNOFFICIAL-dizi
 ...
 ============================================
 ```
@@ -412,7 +412,7 @@ ls -lh obj/KERNEL_OBJ/arch/arm64/boot/dts/vendor/qcom/ | grep dizi
 # - recovery.img (recovery image)
 # - system.img (system partition)
 # - vendor.img (vendor partition)  
-# - lineage-22.0-20260112-UNOFFICIAL-dizi.zip (flashable ROM)
+# - lineage-23.0-20260112-UNOFFICIAL-dizi.zip (flashable ROM)
 # - parrotp-qrd-dizi.dtb
 # - parrotp-qrd-dizi.dtbo
 ```
@@ -497,7 +497,7 @@ fastboot reboot
 
 ```bash
 # Copy ROM to device
-adb push lineage-22.0-20260112-UNOFFICIAL-dizi.zip /sdcard/
+adb push lineage-23.0-20260112-UNOFFICIAL-dizi.zip /sdcard/
 
 # Reboot to recovery
 adb reboot recovery
@@ -579,7 +579,7 @@ After first boot, document any issues:
 ```bash
 cd /home/gianluca/android_device_xiaomi_dizi
 cat > KNOWN_ISSUES.md << 'EOF'
-# Known Issues - Dizi LineageOS 22.0
+# Known Issues - Dizi LineageOS 23.0
 
 ## Build 20260112-UNOFFICIAL
 
