@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2024 The LineageOS Project
+    SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Device name displayed in Settings > About -->
+    <string name="model_summary" translatable="false">POCO Pad (Dizi)</string>
+    
+    <!-- Device manufacturer -->
+    <string name="brand_summary" translatable="false">Xiaomi</string>
+    
+    <!-- Device model -->
+    <string name="device_summary" translatable="false">2405CPCFBG</string>
+</resources>

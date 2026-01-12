@@ -1,0 +1,327 @@
+# All unpinned blobs below are extracted from Xiaomi Dizi EEA Global
+# OS2.0.207.0.VNSEUXM - Android 15
+
+# ACDB - Dizi uses parrot_qrd configuration
+vendor/etc/acdbdata/parrot_qrd/QRD_acdb_cal.acdb
+vendor/etc/acdbdata/parrot_qrd/QRD_workspaceFileXml.qwsp
+vendor/etc/acdbdata/nn_ns_models/fai__2.7.20_0.0__3.0.0_0.0__eai_1.36_enpu2.pmd
+vendor/etc/acdbdata/nn_vad_models/fai__3.0.0_0.0__eai_1.36_enpu2.pmd
+
+# ADSP
+vendor/bin/adsprpcd
+vendor/lib/libadsprpc.so
+vendor/lib/libadsprpc_system.so
+vendor/lib/libadsp_default_listener.so
+vendor/lib/libfastcvopt.so
+vendor/lib64/libadsprpc.so
+vendor/lib64/libadsprpc_system.so
+vendor/lib64/libadsp_default_listener.so
+vendor/lib64/libfastcvopt.so
+
+# Audio
+vendor/bin/audioadsprpcd
+vendor/lib/hw/audio.primary.parrot.so
+vendor/lib/hw/audio.primary.default.so
+vendor/lib/libaudioroute.so
+vendor/lib/libtinyalsa.so
+vendor/lib64/hw/audio.primary.parrot.so
+vendor/lib64/hw/audio.primary.default.so
+vendor/lib64/libaudioroute.so
+vendor/lib64/libtinyalsa.so
+
+# Bluetooth - WCN6750
+vendor/bin/hw/android.hardware.bluetooth@1.0-service-qti
+vendor/etc/init/android.hardware.bluetooth@1.0-service-qti.rc
+vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
+vendor/lib64/libbluetooth_qti.so
+vendor/lib64/libbtconfigstore.so
+
+# Bluetooth Firmware - WCN6750
+vendor/firmware/apbtfw11.tlv
+vendor/firmware/apnv11.bin
+vendor/firmware/crbtfw21.tlv
+vendor/firmware/crnv21.bin
+
+# Camera - 2 SENSORS (Dizi specific)
+vendor/bin/hw/android.hardware.camera.provider@2.7-service_64
+vendor/etc/init/android.hardware.camera.provider@2.7-service_64.rc
+vendor/lib/camera/com.qti.sensor.n83_aac_gc08a3_main_i.so
+vendor/lib/camera/com.qti.sensor.n83_aac_ov08d10_front_i.so
+vendor/lib/libcamera_nn_stub.so
+vendor/lib/libcamera_nn_skel.so
+vendor/lib/libcamera_nn.so
+vendor/lib64/camera/com.qti.sensor.n83_aac_gc08a3_main_i.so
+vendor/lib64/camera/com.qti.sensor.n83_aac_ov08d10_front_i.so
+vendor/lib64/camera/fdconfigpreview.bin
+vendor/lib64/camera/fdconfigpreviewlite.bin
+vendor/lib64/camera/fdconfigvideo.bin
+vendor/lib64/camera/fdconfigvideolite.bin
+vendor/lib64/hw/camera.qcom.so
+vendor/lib64/hw/com.qti.chi.override.so
+vendor/lib64/libcamera_nn_stub.so
+vendor/lib64/libcamera_nn_skel.so
+vendor/lib64/libcamera_nn.so
+vendor/lib64/libcamxexternalformatutils.so
+vendor/lib64/libcamxfacialfeatures.so
+vendor/lib64/libcamxfdalgo.so
+vendor/lib64/libcamxfdengine.so
+vendor/lib64/libcamxstatscore.so
+vendor/lib64/libcamxtintlessalgo.so
+vendor/lib64/libcom.qti.chinodeutils.so
+
+# Display
+vendor/bin/hw/android.hardware.graphics.allocator-service-qti
+vendor/etc/init/android.hardware.graphics.allocator-service-qti.rc
+vendor/lib64/hw/android.hardware.graphics.mapper@4.0-impl-qti-display.so
+vendor/lib64/libdisplayconfig.qti.so
+vendor/lib64/libqdMetaData.so
+vendor/lib64/libsdmcore.so
+vendor/lib64/libsdmutils.so
+vendor/lib64/vendor.display.config@1.0.so
+vendor/lib64/vendor.display.config@2.0.so
+
+# DRM
+vendor/bin/hw/android.hardware.drm-service.clearkey
+vendor/etc/init/android.hardware.drm-service.clearkey.rc
+vendor/lib/liboemcrypto.so
+vendor/lib64/liboemcrypto.so
+
+# DSP
+vendor/dsp/cdsp/fastrpc_shell_3
+
+# Fingerprint
+vendor/bin/hw/android.hardware.biometrics.fingerprint-service.xiaomi
+vendor/etc/init/android.hardware.biometrics.fingerprint-service.xiaomi.rc
+vendor/lib64/hw/fingerprint.fpc.so
+vendor/lib64/hw/fingerprint.goodix.so
+vendor/lib64/libgf_ud_hal.so
+vendor/lib64/libgoodixhwfingerprint.so
+
+# FM Radio - DIZI SPECIFIC (not in Garnet)
+vendor/bin/fm_qsoc_patches
+vendor/bin/fmconfig
+vendor/bin/fmfactorytest
+vendor/bin/fmfactorytestserver
+vendor/bin/poweroffm64
+vendor/etc/init/vendor.qti.hardware.fm@1.0-service.rc
+vendor/lib64/ftm_fm_lib.so
+vendor/lib64/hw/vendor.qti.hardware.fm@1.0-impl.so
+vendor/lib64/libfmpal.so
+vendor/lib64/vendor.qti.hardware.fm@1.0.so
+
+# GPS
+vendor/bin/hw/android.hardware.gnss-service.qti
+vendor/etc/init/android.hardware.gnss-service.qti.rc
+vendor/lib64/hw/android.hardware.gnss-impl-qti.so
+vendor/lib64/libbatching.so
+vendor/lib64/libdataitems.so
+vendor/lib64/libgdtap.so
+vendor/lib64/libgeofencing.so
+vendor/lib64/libgnss.so
+vendor/lib64/libgnssadapter.so
+vendor/lib64/libgnsspps.so
+vendor/lib64/libloc_core.so
+vendor/lib64/liblocationservice_glue.so
+vendor/lib64/liblocation_api.so
+vendor/lib64/libxtadapter.so
+
+# Graphics
+vendor/lib/egl/eglSubDriverAndroid.so
+vendor/lib/egl/libEGL_adreno.so
+vendor/lib/egl/libGLESv1_CM_adreno.so
+vendor/lib/egl/libGLESv2_adreno.so
+vendor/lib/egl/libq3dtools_adreno.so
+vendor/lib/egl/libq3dtools_esx.so
+vendor/lib/libC2D2.so
+vendor/lib/libCB.so
+vendor/lib/libOpenCL.so
+vendor/lib/libgsl.so
+vendor/lib/libllvm-glnext.so
+vendor/lib/libllvm-qcom.so
+vendor/lib64/egl/eglSubDriverAndroid.so
+vendor/lib64/egl/libEGL_adreno.so
+vendor/lib64/egl/libGLESv1_CM_adreno.so
+vendor/lib64/egl/libGLESv2_adreno.so
+vendor/lib64/egl/libq3dtools_adreno.so
+vendor/lib64/egl/libq3dtools_esx.so
+vendor/lib64/libC2D2.so
+vendor/lib64/libCB.so
+vendor/lib64/libOpenCL.so
+vendor/lib64/libgsl.so
+vendor/lib64/libllvm-glnext.so
+vendor/lib64/libllvm-qcom.so
+
+# Health
+vendor/bin/hw/android.hardware.health-service.qti
+vendor/etc/init/android.hardware.health-service.qti.rc
+
+# IMS
+-vendor/app/ims/ims.apk
+vendor/bin/ims_rtp_daemon
+vendor/bin/imsdatadaemon
+vendor/bin/imsrcsd
+vendor/lib64/libdiag_system.so
+vendor/lib64/libimscamera_jni.so
+vendor/lib64/libimsmedia_jni.so
+vendor/lib64/lib-imsvideocodec.so
+vendor/lib64/lib-imsvt.so
+vendor/lib64/lib-imsvtextutils.so
+vendor/lib64/lib-imsvtutils.so
+vendor/lib64/vendor.qti.diaghal@1.0.so
+vendor/lib64/vendor.qti.hardware.radio.ims@1.0.so
+vendor/lib64/vendor.qti.imsrtpservice@3.0.so
+
+# IR
+vendor/bin/hw/android.hardware.ir-service.lineage
+vendor/etc/init/android.hardware.ir-service.lineage.rc
+
+# Keymaster
+vendor/bin/hw/android.hardware.keymaster@4.1-service-qti
+vendor/etc/init/android.hardware.keymaster@4.1-service-qti.rc
+vendor/lib64/libkeymasterdeviceutils.so
+vendor/lib64/libkeymasterprovision.so
+vendor/lib64/libkeymasterutils.so
+vendor/lib64/libqtikeymaster4.so
+
+# Media
+vendor/lib/libOmxCore.so
+vendor/lib/libmmosal.so
+vendor/lib/libmmparser_lite.so
+vendor/lib64/libmmosal.so
+vendor/lib64/libmmparser_lite.so
+
+# Neural Networks
+vendor/bin/hw/android.hardware.neuralnetworks-service-qti
+vendor/etc/init/android.hardware.neuralnetworks-service-qti.rc
+vendor/lib64/libhexagon_nn_skel.so
+
+# Peripheral Manager
+vendor/bin/pm-proxy
+vendor/bin/pm-service
+vendor/lib64/libperipheral_client.so
+
+# Power
+vendor/bin/hw/android.hardware.power-service.xiaomi-libperfmgr
+vendor/etc/init/android.hardware.power-service.xiaomi-libperfmgr.rc
+vendor/lib64/libperfconfig.so
+vendor/lib64/libperfgluelayer.so
+vendor/lib64/libqti-perfd-client.so
+
+# QMI
+vendor/bin/irsc_util
+vendor/lib/libdiag.so
+vendor/lib/libdsi_netctrl.so
+vendor/lib/libdsutils.so
+vendor/lib/libidl.so
+vendor/lib/libqcci_legacy.so
+vendor/lib/libqdi.so
+vendor/lib/libqdp.so
+vendor/lib/libqmi.so
+vendor/lib/libqmi_cci.so
+vendor/lib/libqmi_client_helper.so
+vendor/lib/libqmi_client_qmux.so
+vendor/lib/libqmi_common_so.so
+vendor/lib/libqmi_csi.so
+vendor/lib/libqmi_encdec.so
+vendor/lib/libqmiservices.so
+vendor/lib64/libdiag.so
+vendor/lib64/libdsi_netctrl.so
+vendor/lib64/libdsutils.so
+vendor/lib64/libidl.so
+vendor/lib64/libqcci_legacy.so
+vendor/lib64/libqdi.so
+vendor/lib64/libqdp.so
+vendor/lib64/libqmi.so
+vendor/lib64/libqmi_cci.so
+vendor/lib64/libqmi_client_helper.so
+vendor/lib64/libqmi_client_qmux.so
+vendor/lib64/libqmi_common_so.so
+vendor/lib64/libqmi_csi.so
+vendor/lib64/libqmi_encdec.so
+vendor/lib64/libqmiservices.so
+
+# RIL
+vendor/bin/ATFWD-daemon
+vendor/bin/hw/qcrild
+vendor/bin/netmgrd
+vendor/bin/qti
+vendor/bin/rmt_storage
+vendor/etc/init/qcrild.rc
+vendor/lib64/libconfigdb.so
+vendor/lib64/liblqe.so
+vendor/lib64/libnetmgr.so
+vendor/lib64/libnetmgr_common.so
+vendor/lib64/libnetmgr_nr_fusion.so
+vendor/lib64/libnetmgr_rm.so
+vendor/lib64/libpdmapper.so
+vendor/lib64/libpdnotifier.so
+vendor/lib64/libqcrilNr.so
+vendor/lib64/libqcrilNrFramework.so
+vendor/lib64/libqcrilNrLogger.so
+vendor/lib64/libqcrilNrQtiMutex.so
+vendor/lib64/libqcrilNrUtils.so
+vendor/lib64/libqrtr.so
+vendor/lib64/libril-qc-hal-qmi.so
+vendor/lib64/libril-qc-logger.so
+vendor/lib64/libril-qc-ltedirectdisc.so
+vendor/lib64/libril-qc-qmi-1.so
+vendor/lib64/libril-qc-radioconfig.so
+vendor/lib64/librilqmiservices.so
+vendor/lib64/libsettings.so
+vendor/lib64/libsubsystem_control.so
+vendor/lib64/libsystem_health_mon.so
+
+# Sensors
+vendor/bin/hw/android.hardware.sensors-service.xiaomi-multihal
+vendor/etc/init/android.hardware.sensors-service.xiaomi-multihal.rc
+vendor/lib64/hw/android.hardware.sensors@2.1-impl.xiaomi.so
+vendor/lib64/libsensorndkbridge.so
+vendor/lib64/libsnsapi.so
+vendor/lib64/libsnsdiaglog.so
+vendor/lib64/libssc.so
+vendor/lib64/sensors.ssc.so
+
+# Thermal
+vendor/bin/hw/android.hardware.thermal-service.qti
+vendor/etc/init/android.hardware.thermal-service.qti.rc
+vendor/lib64/libthermalclient.so
+
+# Time
+vendor/bin/time_daemon
+vendor/lib64/libtime_genoff.so
+
+# USB
+vendor/bin/hw/android.hardware.usb-service.qti
+vendor/bin/hw/android.hardware.usb.gadget-service.qti
+vendor/etc/init/android.hardware.usb-service.qti.rc
+vendor/etc/init/android.hardware.usb.gadget-service.qti.rc
+vendor/lib64/hw/android.hardware.usb@1.0-impl-qti.so
+
+# Vibrator
+vendor/bin/hw/vendor.qti.hardware.vibrator.service
+vendor/etc/init/vendor.qti.hardware.vibrator.service.rc
+vendor/lib64/hw/vendor.qti.hardware.vibrator.impl.so
+vendor/lib64/libqtivibratoreffect.so
+
+# WiFi - WCN6750 SPECIFIC
+vendor/bin/cnss-daemon
+vendor/bin/hw/android.hardware.wifi-service
+vendor/etc/init/android.hardware.wifi-service.rc
+vendor/etc/wifi/qca6750/WCNSS_qcom_cfg.ini
+vendor/etc/wifi/qca6750/n83_ce_sar.xml
+vendor/etc/wifi/qca6750/n83_default_sar.xml
+vendor/etc/wifi/qca6750/n83_fcc_sar.xml
+vendor/etc/wifi/qca6750/n83u_ce_sar.xml
+vendor/etc/wifi/qca6750/n83u_default_sar.xml
+vendor/etc/wifi/qca6750/n83u_fcc_sar.xml
+vendor/lib64/libwifi-hal-ctrl.so
+vendor/lib64/libwifi-hal-qcom.so
+vendor/lib64/libwpa_client.so
+
+# WiFi Firmware - WCN6750
+vendor/firmware/wlan/qca_cld/qca6750/wlan_mac.bin
+vendor/firmware/wlanmdsp.otaupdate
+
+# Xiaomi Parts
+vendor/app/XiaomiParts/XiaomiParts.apk
+-vendor/etc/permissions/privapp-permissions-xiaomiparts.xml

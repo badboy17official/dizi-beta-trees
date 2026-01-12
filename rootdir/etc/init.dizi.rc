@@ -1,0 +1,186 @@
+# Copyright (C) 2024 The LineageOS Project
+# SPDX-License-Identifier: Apache-2.0
+
+on early-init
+    # Set permissions for xiaomi hall sensor
+    chown system system /sys/class/xiaomi_hall/hall_state
+    chmod 0664 /sys/class/xiaomi_hall/hall_state
+
+on init
+    # Setup permission for Power HAL
+    chown system system /dev/cpuset/foreground/cpus
+    chmod 0664 /dev/cpuset/foreground/cpus
+    chown system system /dev/cpuset/background/cpus
+    chmod 0664 /dev/cpuset/background/cpus
+    chown system system /dev/cpuset/system-background/cpus
+    chmod 0664 /dev/cpuset/system-background/cpus
+    chown system system /dev/cpuset/top-app/cpus
+    chmod 0664 /dev/cpuset/top-app/cpus
+
+    # FM Radio permissions
+    chown system audio /dev/radio0
+    chmod 0660 /dev/radio0
+
+on boot
+    # Disable edge limit control interface for FW loading
+    write /sys/devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/11300000.qcom,icnss2/net/wlan0/edge_ctrl 0
+
+    # Set the default IRQ affinity to the silver cluster.
+    write /proc/irq/default_smp_affinity f
+
+    # Camera permissions
+    chmod 0664 /sys/kernel/debug/tracing/trace_marker
+    chown system camera /sys/kernel/debug/tracing/trace_marker
+
+    # Hall sensor (lid detection) permissions  
+    chown system system /sys/bus/platform/devices/xiaomi_hall/state
+    chmod 0644 /sys/bus/platform/devices/xiaomi_hall/state
+    
+    # Display settings
+    chown system system /sys/class/drm/card0-DSI-1/disp_param
+    chmod 0664 /sys/class/drm/card0-DSI-1/disp_param
+    chown system system /sys/class/drm/card0-DSI-1/panel_info
+    chmod 0444 /sys/class/drm/card0-DSI-1/panel_info
+
+    # Touchscreen permissions
+    chown system system /sys/class/touch/touch_dev/palm_sensor
+    chmod 0664 /sys/class/touch/touch_dev/palm_sensor
+
+    # Audio amplifier permissions (stereo speakers)
+    chmod 0666 /dev/i2c-0
+    chmod 0666 /dev/i2c-1
+    chown system audio /dev/aw_smartpa
+    chmod 0660 /dev/aw_smartpa
+    chown system audio /sys/class/smartpa/calibrate
+    chmod 0660 /sys/class/smartpa/calibrate
+
+    # LED permissions
+    chown system system /sys/class/leds/white/brightness
+    chmod 0664 /sys/class/leds/white/brightness
+
+    # Wakeup gestures
+    chown system system /sys/touchpanel/double_tap
+    chmod 0664 /sys/touchpanel/double_tap
+
+    # WiFi firmware paths
+    setprop wifi.interface wlan0
+    setprop wifi.concurrent.interface softap0
+
+on property:ro.boot.hwname=*
+    setprop vendor.boot.hwname ${ro.boot.hwname}
+
+# FM Radio service
+service fmradio /vendor/bin/hw/vendor.qti.hardware.fmradio@1.0-service
+    class late_start
+    user system
+    group system audio
+    
+# Hall sensor service (lid detection)
+on property:vendor.xiaomi.hall.state=*
+    setprop sys.lid.state ${vendor.xiaomi.hall.state}
+
+# FM Radio initialization
+on property:ro.vendor.fm.firmware=/vendor/firmware/fmradio/
+    insmod /vendor/lib/modules/radio-rtc6226.ko
+
+# Audio amplifier initialization
+service vendor.audio.amplifier /vendor/bin/amplifier_init.sh
+    class late_start
+    user root
+    group root system audio
+    oneshot
+    disabled
+
+on property:sys.boot_completed=1
+    start vendor.audio.amplifier
+
+# Power HAL configuration for tablet
+on property:vendor.post_boot.parsed=1
+    # Setup CPU frequencies
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor schedutil
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_freq 1516800
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/hispeed_load 90
+    
+    write /sys/devices/system/cpu/cpu6/cpufreq/scaling_governor schedutil
+    write /sys/devices/system/cpu/cpu6/cpufreq/schedutil/hispeed_freq 2016000
+    write /sys/devices/system/cpu/cpu6/cpufreq/schedutil/hispeed_load 85
+
+    # Setup GPU frequencies
+    write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
+    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 220000000
+    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 940000000
+
+    # Enable power efficient workqueue
+    write /sys/module/workqueue/parameters/power_efficient Y
+
+    # Setup ZRAM
+    write /proc/sys/vm/swappiness 100
+    write /proc/sys/vm/page-cluster 0
+    swapon_all /vendor/etc/fstab.qcom
+
+# Camera initialization
+service vendor.camera-provider-2-4 /vendor/bin/hw/android.hardware.camera.provider@2.4-service_64
+    override
+    interface android.hardware.camera.provider@2.4::ICameraProvider legacy/0
+    interface vendor.qti.hardware.camera.postproc@1.0::IPostProcService camerapostprocservice
+    class hal
+    user cameraserver
+    group audio camera input drmrpc oem_2907
+    ioprio rt 4
+    capabilities SYS_NICE
+    task_profiles CameraServiceCapacity MaxPerformance
+
+# Tablet-specific: No telephony services
+on property:ro.build.type=userdebug
+    # Enable verbose logging for debugging
+    setprop persist.vendor.camera.global.debug 1
+    setprop persist.vendor.radio.adb_log_on 1
+
+# Disable modem/telephony services - tablet has no cellular
+on property:persist.sys.device_provisioned=1
+    stop vendor.qti.hardware.radio.qcrilhook@1.0-service
+    stop vendor.qti.hardware.radio.qtiradio@1.0-service
+    stop vendor.qti.hardware.radio.ims@1.0-service
+
+# USB configuration
+on boot
+    # Setup USB gadget
+    setprop sys.usb.controller "a600000.dwc3"
+    setprop sys.usb.configfs 1
+    setprop sys.usb.ffs.aio_compat 1
+
+# Thermal management for tablet
+on property:sys.boot_completed=1
+    # Thermal profiles for different usage scenarios
+    write /sys/class/thermal/thermal_message/sconfig 10
+
+# Battery optimization
+on charger
+    setprop sys.usb.configfs 1
+    write /sys/class/power_supply/battery/input_suspend 0
+    write /sys/class/power_supply/battery/charging_enabled 1
+
+# Display density override (tablet mode)
+on boot
+    setprop ro.sf.lcd_density 280
+
+# Performance profiles
+on property:vendor.post_boot.parsed=1
+    # Set thermal restrictions off during boot
+    write /sys/class/thermal/thermal_message/temp_state 0
+
+# Fingerprint sensor - disabled (tablet doesn't have one)
+# IR blaster - disabled (tablet doesn't have one)
+
+# Tablet-specific features
+on boot
+    # Enable keyboard/mouse support
+    setprop ro.input.noresample 1
+    
+    # Desktop mode optimizations
+    setprop ro.sf.lcd_density 280
+    setprop debug.sf.enable_hwc_vds 1
+    
+    # Multi-window support
+    setprop persist.sys.force_sw_gles 0
+    setprop ro.config.freeform_window_management true

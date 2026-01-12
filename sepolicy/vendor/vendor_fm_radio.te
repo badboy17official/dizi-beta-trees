@@ -1,0 +1,24 @@
+# FM Radio HAL SELinux policy
+
+type vendor_fm_radio, domain;
+type vendor_fm_radio_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(vendor_fm_radio)
+
+# Allow FM Radio to access radio device
+allow vendor_fm_radio radio_device:chr_file rw_file_perms;
+
+# Allow FM Radio to use audio
+allow vendor_fm_radio audio_device:chr_file rw_file_perms;
+allow vendor_fm_radio audio_device:dir search;
+
+# Allow FM Radio to set audio properties
+set_prop(vendor_fm_radio, vendor_audio_prop)
+
+# Allow FM Radio to access I2C devices
+allow vendor_fm_radio self:capability { dac_override dac_read_search };
+allow vendor_fm_radio sysfs:file rw_file_perms;
+
+# Allow FM Radio to communicate with HAL
+hwbinder_use(vendor_fm_radio)
+get_prop(vendor_fm_radio, hwservicemanager_prop)

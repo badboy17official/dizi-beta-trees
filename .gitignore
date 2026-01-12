@@ -1,0 +1,30 @@
+# Build artifacts
+*.o
+*.ko
+*.dtb
+*.dtbo
+
+# Temporary files
+*~
+*.swp
+.*.swp
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# Kernel dtsi working directory (these go in kernel repo)
+kernel_dtsi/
+
+# Local testing
+test/
+testing/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation working files
+*.bak
+*.tmp

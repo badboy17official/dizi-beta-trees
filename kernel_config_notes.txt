@@ -1,0 +1,68 @@
+# Kernel configuration for Xiaomi Dizi (vendor/dizi_GKI.config)
+# This file should be placed in: kernel/xiaomi/sm7435/arch/arm64/configs/vendor/dizi_GKI.config
+#
+# Based on Garnet configuration with modifications for:
+# - WCN6750 WiFi/BT chipset (vs WCN3990/Adrastea)
+# - FM Radio support
+# - 2-sensor camera configuration
+# - Battery authentication
+# - Hall sensor support
+
+# WiFi - WCN6750 specific
+CONFIG_QCA_CLD_WLAN=m
+CONFIG_QCA6750=y
+CONFIG_CNSS_QCA6750=y
+CONFIG_CNSS2=m
+CONFIG_CNSS2_QMI=y
+CONFIG_CNSS_UTILS=m
+CONFIG_WCNSS_MEM_PRE_ALLOC=m
+CONFIG_WLAN_FEATURE_11AX=y
+CONFIG_QCOM_WLAN=y
+
+# Bluetooth - WCN6750
+CONFIG_BT_QCA=m
+CONFIG_BTFM_SLIM=m
+CONFIG_BTFM_SLIM_WCN6750=y
+
+# FM Radio - RTC6226
+CONFIG_RADIO_IRIS=y
+CONFIG_RADIO_IRIS_TRANSPORT=m
+CONFIG_I2C_RTC6226_QCA=m
+
+# Camera - 2 sensors
+CONFIG_GC08A3=y
+CONFIG_OV08D10=y
+CONFIG_MSMB_CAMERA=m
+CONFIG_MSM_CAMERA_SENSOR=m
+
+# Battery Authentication
+CONFIG_AUTH_BATTERY=y
+
+# Sensors - Hall sensor (lid detection)
+CONFIG_SENSORS_HALL=y
+CONFIG_INPUT_HALL_SENSOR=y
+
+# Display
+CONFIG_DRM_MSM=y
+CONFIG_FB_MSM=y
+
+# Audio
+CONFIG_SND_SOC_SM7435=m
+CONFIG_SND_SOC_PARROT=m
+
+# Power Management
+CONFIG_QCOM_BATTERY_CHARGER=m
+CONFIG_QPNP_SMB5=m
+
+# USB
+CONFIG_USB_DWC3_MSM=m
+CONFIG_USB_CONFIGFS=y
+CONFIG_USB_CONFIGFS_F_FS=y
+
+# Thermal
+CONFIG_QCOM_THERMAL_LIMITS_DCVS=y
+CONFIG_QTI_THERMAL=m
+
+# Debug (optional for development)
+CONFIG_DYNAMIC_DEBUG=y
+CONFIG_DEBUG_FS=y
