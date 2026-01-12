@@ -4,15 +4,21 @@
     "target_path": "hardware/xiaomi"
   },
   {
-    "repository": "android_kernel_xiaomi_sm7435",
-    "target_path": "kernel/xiaomi/sm7435"
+    "repository": "M0Rf30/android_kernel_xiaomi_sm7435",
+    "target_path": "kernel/xiaomi/sm7435",
+    "branch": "lineage-23.0-dizi",
+    "remote": "github"
   },
   {
-    "repository": "android_kernel_xiaomi_sm7435-devicetrees",
-    "target_path": "kernel/xiaomi/sm7435-devicetrees"
+    "repository": "M0Rf30/android_kernel_xiaomi_sm7435-devicetrees",
+    "target_path": "kernel/xiaomi/sm7435-devicetrees",
+    "branch": "lineage-23.0-dizi",
+    "remote": "github"
   },
   {
-    "repository": "android_kernel_xiaomi_sm7435-modules",
-    "target_path": "kernel/xiaomi/sm7435-modules"
+    "repository": "M0Rf30/android_kernel_xiaomi_sm7435-modules",
+    "target_path": "kernel/xiaomi/sm7435-modules",
+    "branch": "lineage-23.0",
+    "remote": "github"
   }
 ]
