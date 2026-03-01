@@ -1,163 +1,175 @@
-📄 Redmi Pad Pro (dizi) – LineageOS Bring-Up Progress
-📌 Device Information
+# Redmi Pad Pro (dizi) – LineageOS Bring-Up
 
-Device Name: Redmi Pad Pro
+## 📱 Device Information
 
-Codename: dizi
+- **Device Name:** Redmi Pad Pro  
+- **Codename:** dizi  
+- **SoC:** Qualcomm SM7435  
+- **Android Base:** LineageOS 23 (Android 16)  
+- **Kernel Type:** GKI (Generic Kernel Image)
 
-SoC: Qualcomm SM7435
+---
 
-Android Base: LineageOS 23 (Android 16)
+# 📌 Project Status
 
-Kernel Type: GKI (Generic Kernel Image)
+This repository contains the early bring-up work for Redmi Pad Pro (dizi) on LineageOS.
 
-🧠 Initial Phase – Kernel Attempt (Monolithic Build)
-What Was Attempted
+The project has migrated from an attempted monolithic kernel build to a proper GKI-based setup.
 
-Cloned SM7435 kernel sources
+---
 
-Added:
+# 🧠 Initial Kernel Attempt (Abandoned)
 
-TARGET_KERNEL_SOURCE := kernel/xiaomi/sm7435
-TARGET_KERNEL_CONFIG := gki_defconfig
-TARGET_KERNEL_EXT_MODULE_ROOT := kernel/xiaomi/sm7435-modules
+## What Was Attempted
 
-Tried full kernel + DTB compilation
+- Integrated SM7435 kernel source
+- Used:
+  TARGET_KERNEL_SOURCE := kernel/xiaomi/sm7435  
+  TARGET_KERNEL_CONFIG := gki_defconfig  
+  TARGET_KERNEL_EXT_MODULE_ROOT := kernel/xiaomi/sm7435-modules  
 
-Issues Found
+## Problems Encountered
 
-DTBs for actual device were not present.
+- No device-specific DTS present
+- Kernel generated unrelated upstream DTBs
+- Missing vendor DTBs
+- Module packaging failures
+- Recovery module mismatches
+- DTB move errors
+- Kernel not aligned with modern Xiaomi GKI architecture
 
-Kernel built random upstream DTBs (msm899x, sdm845, etc.).
+## Conclusion
 
-No sm7435 device-specific DTS found.
+Redmi Pad Pro is a **GKI-based device**.  
+Full kernel compilation from source is incorrect for this device.
 
-Packaging failed due to missing vendor DTBs.
+---
 
-Kernel modules mismatch errors.
+# 🔄 Migration to Proper GKI Setup
 
-Vendor boot module expectations failed.
+## BoardConfig Changes
 
-Conclusion
+Commented out:
 
-Redmi Pad Pro is a modern GKI device.
-Full kernel compilation is unnecessary and incorrect.
-
-🔄 Migration To Proper GKI Setup
-Decision
-
-Switch from monolithic kernel build to:
-
-Prebuilt stock kernel images
-
-GKI configuration
-
-Stock dtb/dtbo usage
-
-⚙️ BoardConfig Changes
-Commented Out:
+```make
 # TARGET_KERNEL_SOURCE := kernel/xiaomi/sm7435
 # TARGET_KERNEL_CONFIG := gki_defconfig
 # TARGET_KERNEL_EXT_MODULE_ROOT := kernel/xiaomi/sm7435-modules
+```
+
 Added:
+
+```make
 BOARD_USES_GENERIC_KERNEL_IMAGE := true
 
 BOARD_PREBUILT_BOOTIMAGE := device/xiaomi/dizi/prebuilt/boot.img
 BOARD_PREBUILT_VENDOR_BOOTIMAGE := device/xiaomi/dizi/prebuilt/vendor_boot.img
 BOARD_PREBUILT_DTBOIMAGE := device/xiaomi/dizi/prebuilt/dtbo.img
-🔐 SELinux Progress
-Fixed Issues:
+```
 
-Removed duplicate radio_device declaration
+---
 
-Removed forbidden capabilities:
+# 🔐 SELinux Progress
 
-dac_override
-dac_read_search
-
-Removed conflicting /dev/radio0 file_context
-
-Cleaned vendor_fm_radio policy
-
-Result:
-SELinux now compiles cleanly (pre-GKI migration stage).
-
-🧩 Module Cleanup
 Fixed:
 
-Missing kernel modules load list
+- Duplicate `radio_device` declaration
+- Removed forbidden capabilities:
+  - dac_override
+  - dac_read_search
+- Removed conflicting `/dev/radio0` file_context
+- Cleaned vendor_fm_radio policy
+- Fixed neverallow violations
 
-Removed references to non-built .ko files
+SELinux now compiles cleanly under GKI configuration.
 
-Cleaned modules.load inconsistencies
+---
 
-Removed gh_virt_wdt.ko reference from recovery
+# 🧩 Kernel Module Cleanup
 
-📂 Repository Structure
+- Removed references to missing `.ko` modules
+- Cleaned modules.load lists
+- Removed recovery module conflicts (gh_virt_wdt.ko)
+- Eliminated unnecessary FM components
+
+---
+
+# 📂 Repository Structure
+
+```
 device/xiaomi/dizi/
  ├── BoardConfig.mk
  ├── device.mk
  ├── sepolicy/
  ├── modules/
- ├── prebuilt/   (to contain stock images)
-📦 Next Required Files (From Stock Fastboot ROM)
+ ├── prebuilt/   (stock kernel images go here)
+```
 
-To complete GKI bring-up:
+---
 
-boot.img
+# 📦 Required Stock Files
 
-vendor_boot.img
+From official fastboot ROM:
 
-dtbo.img
+- boot.img
+- vendor_boot.img
+- dtbo.img
+- vendor_dlkm.img (recommended)
 
-vendor_dlkm.img (optional but recommended)
+Place inside:
 
-These will be placed in:
-
+```
 device/xiaomi/dizi/prebuilt/
-🚀 Next Build Expectations
+```
 
-After adding stock prebuilts:
+---
 
-❌ No kernel compilation
+# 🚀 Expected Build Behavior (After Prebuilts Added)
 
-❌ No DTB generation
+- No kernel compilation
+- No DTB generation
+- No module build
+- Direct packaging using stock GKI kernel
+- System + vendor image build only
 
-❌ No module build
+---
 
-✅ Direct system/vendor packaging
+# 📊 Current Status
 
-✅ Proper GKI-based boot image usage
+| Component | Status |
+|------------|--------|
+| Device Tree | Structured |
+| Kernel (Source Build) | Abandoned |
+| GKI Migration | In Progress |
+| SELinux | Clean |
+| Module Cleanup | Completed |
+| Prebuilt Integration | Pending |
+| First Boot | Pending |
 
-📊 Current Status
-Component	Status
-Device Tree	✅ Structured
-Kernel (Source)	❌ Abandoned
-GKI Setup	🔄 In Progress
-SELinux	✅ Fixed
-Modules	✅ Cleaned
-Prebuilt Images	⏳ Waiting
-First Boot Attempt	⏳ Pending
-🧠 Lessons Learned
+---
 
-Modern Xiaomi devices use GKI.
+# 🎯 Next Steps
 
-Full kernel compilation is unnecessary.
+1. Extract required images from stock fastboot ROM
+2. Add them to prebuilt/
+3. Push using Git LFS (if files exceed 100MB)
+4. Perform clean GKI build
+5. Attempt first flash
 
-DTB must come from stock.
+---
 
-Vendor boot + dtbo are critical.
+# 🧠 Notes
 
-Always confirm DTS presence before kernel integration.
+Modern Xiaomi devices rely on:
 
-🎯 Immediate Next Steps
+- GKI base kernel
+- vendor_boot image
+- dtbo image
+- vendor_dlkm modules
 
-Extract required images from stock fastboot ROM.
+Monolithic kernel builds are not applicable.
 
-Place in prebuilt/.
+---
 
-Push with Git LFS if needed.
-
-Run clean GKI build.
-
-Attempt first flash
+Project is currently in early bring-up stage.
+Further debugging and hardware validation pending.
