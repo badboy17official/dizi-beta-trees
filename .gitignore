@@ -28,3 +28,10 @@ Thumbs.db
 # Documentation working files
 *.bak
 *.tmp
+
+out/
+*.log
+*.img
+*.zip
+*.tar
+*.gz
