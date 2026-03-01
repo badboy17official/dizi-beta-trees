@@ -29,9 +29,9 @@ AB_OTA_POSTINSTALL_CONFIG += \
     FILESYSTEM_TYPE_vendor=erofs \
     POSTINSTALL_OPTIONAL_vendor=true
 
-PRODUCT_PACKAGES += \
-    checkpoint_gc \
-    otapreopt_script
+#PRODUCT_PACKAGES += \
+ #   checkpoint_gc \
+  #  otapreopt_script
 
 # API
 BOARD_SHIPPING_API_LEVEL := 31
@@ -41,34 +41,34 @@ PRODUCT_SHIPPING_API_LEVEL := $(BOARD_SHIPPING_API_LEVEL)
 $(call soong_config_set, android_hardware_audio, run_64bit, true)
 $(call soong_config_set, android_hardware_audio, skip_speaker_layout_channel_mask_field, true)
 
-PRODUCT_PACKAGES += \
-    android.hardware.audio@7.0-impl \
-    android.hardware.audio.effect@7.0-impl \
-    android.hardware.audio.service
+#PRODUCT_PACKAGES += \
+ #   android.hardware.audio@7.0-impl \
+  #  android.hardware.audio.effect@7.0-impl \
+   # android.hardware.audio.service
 
-PRODUCT_PACKAGES += \
-    android.hardware.soundtrigger@2.3-impl
+#PRODUCT_PACKAGES += \
+ #   android.hardware.soundtrigger@2.3-impl
 
-PRODUCT_PACKAGES += \
-    audioadsprpcd \
-    audio.r_submix.default \
-    audio.usb.default
+#PRODUCT_PACKAGES += \
+ #   audioadsprpcd \
+  #  audio.r_submix.default \
+   # audio.usb.default
 
-PRODUCT_PACKAGES += \
-    lib_bt_aptx \
-    lib_bt_ble \
-    lib_bt_bundle \
-    libagm_compress_plugin \
-    libagm_mixer_plugin \
-    libagm_pcm_plugin \
-    libagmclient \
-    libbatterylistener \
-    libfmpal \
-    libqcompostprocbundle \
-    libqcomvisualizer \
-    libqcomvoiceprocessing \
-    libsndcardparser \
-    libvolumelistener
+#PRODUCT_PACKAGES += \
+ #   lib_bt_aptx \
+  #  lib_bt_ble \
+   # lib_bt_bundle \
+ #   libagm_compress_plugin \
+  #  libagm_mixer_plugin \
+   # libagm_pcm_plugin \
+   # libagmclient \
+#    libbatterylistener \
+ #   libfmpal \
+  #  libqcompostprocbundle \
+   # libqcomvisualizer \
+   # libqcomvoiceprocessing \
+   # libsndcardparser \
+   # libvolumelistener
 
 AUDIO_HAL_DIR := hardware/qcom-caf/sm8450/audio/primary-hal
 
@@ -88,22 +88,22 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
 
 # Bluetooth
-PRODUCT_PACKAGES += \
-    audio.bluetooth.default \
-    android.hardware.bluetooth.audio-impl
+#PRODUCT_PACKAGES += \
+ #   audio.bluetooth.default \
+  #  android.hardware.bluetooth.audio-impl
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.bluetooth_le.xml
 
 # Boot control
-PRODUCT_PACKAGES += \
-    android.hardware.boot-service.qti \
-    android.hardware.boot-service.qti.recovery
+#PRODUCT_PACKAGES += \
+   # android.hardware.boot-service.qti \
+ #   android.hardware.boot-service.qti.recovery
 
 # Camera - UPDATED FOR 2 SENSORS (vs 4 on Garnet)
-PRODUCT_PACKAGES += \
-    libcamera2ndk_vendor
+#PRODUCT_PACKAGES += \
+ #   libcamera2ndk_vendor
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -112,45 +112,42 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.raw.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.raw.xml
 
 # Display
-PRODUCT_PACKAGES += \
-    android.hardware.graphics.mapper@4.0-impl-qti-display \
-    vendor.qti.hardware.display.allocator-service \
-    vendor.qti.hardware.display.composer-service
+#PRODUCT_PACKAGES += \
+ #   android.hardware.graphics.mapper@4.0-impl-qti-display \
+  #  vendor.qti.hardware.display.allocator-service \
+   # vendor.qti.hardware.display.composer-service
 
-PRODUCT_PACKAGES += \
-    init.qti.display_boot.rc \
-    init.qti.display_boot.sh
+#PRODUCT_PACKAGES += \
+ #   init.qti.display_boot.rc \
+  #  init.qti.display_boot.sh
 
 PRODUCT_COPY_FILES += \
     hardware/qcom-caf/sm8450/display/config/snapdragon_color_libs_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/snapdragon_color_libs_config.xml
 
 # DRM
-PRODUCT_PACKAGES += \
-    android.hardware.drm-service.clearkey
+#PRODUCT_PACKAGES += \
+ #   android.hardware.drm-service.clearkey
 
 # Dynamic partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # Fastbootd
-PRODUCT_PACKAGES += \
-    fastbootd
+#PRODUCT_PACKAGES += \
+#    fastbootd
 
 # Fingerprint
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint-service.xiaomi \
-    libudfpshandler
+#PRODUCT_PACKAGES += \
+ #   android.hardware.biometrics.fingerprint-service.xiaomi \
+  #  libudfpshandler
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
 
 # FM Radio - NEW FOR DIZI (not in Garnet)
-PRODUCT_PACKAGES += \
-    FM2 \
-    libqcomfm_jni \
-    qcom.fmradio
-
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.radio.fm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.radio.fm.xml
+#PRODUCT_PACKAGES += \
+ #   FM2 \
+  #  libqcomfm_jni \
+   # qcom.fmradio
 
 # Graphics
 PRODUCT_COPY_FILES += \
@@ -168,37 +165,37 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml
 
 # Health
-PRODUCT_PACKAGES += \
-    android.hardware.health-service.qti \
-    android.hardware.health-service.qti_recovery
+#PRODUCT_PACKAGES += \
+ #   android.hardware.health-service.qti \
+  #  android.hardware.health-service.qti_recovery
 
 # IFAA
-PRODUCT_PACKAGES += \
-    IFAAService
+#PRODUCT_PACKAGES += \
+   # IFAAService
 
 # Init
-PRODUCT_PACKAGES += \
-    charger_fw_fstab.qti \
-    fstab.qcom \
-    init.dizi.rc \
-    init.qcom.rc \
-    init.recovery.qcom.rc \
-    init.target.rc \
-    ueventd-odm.rc \
-    ueventd.qcom.rc
+#PRODUCT_PACKAGES += \
+ #   charger_fw_fstab.qti \
+  #  fstab.qcom \
+   # init.dizi.rc \
+   # init.qcom.rc \
+   # init.recovery.qcom.rc \
+   # init.target.rc \
+    #ueventd-odm.rc \
+   # ueventd.qcom.rc
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.qcom:$(TARGET_COPY_OUT_VENDOR_RAMDISK)/first_stage_ramdisk/fstab.qcom
 
 # IPACM
-PRODUCT_PACKAGES += \
-    ipacm \
-    IPACM_cfg.xml \
-    IPACM_Filter_cfg.xml
+#PRODUCT_PACKAGES += \
+ #   ipacm \
+  #  IPACM_cfg.xml \
+   # IPACM_Filter_cfg.xml
 
 # IR
-PRODUCT_PACKAGES += \
-    android.hardware.ir-service.lineage
+#PRODUCT_PACKAGES += \
+  #  android.hardware.ir-service.lineage
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.consumerir.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.consumerir.xml
@@ -212,8 +209,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.keystore.app_attest_key.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.keystore.app_attest_key.xml
 
 # Lineage Health
-PRODUCT_PACKAGES += \
-    vendor.lineage.health-service.default
+#PRODUCT_PACKAGES += \
+ #   vendor.lineage.health-service.default
 
 $(call soong_config_set,lineage_health,charging_control_supports_bypass,false)
 
@@ -228,17 +225,17 @@ PRODUCT_COPY_FILES += \
     $(AUDIO_HAL_DIR)/configs/common/codec2/media_codecs_c2_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_c2_audio.xml
 
 # Memtrack
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.memtrack-service
+#PRODUCT_PACKAGES += \
+ #   vendor.qti.hardware.memtrack-service
 
 # Network
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml
 
 # NFC
-PRODUCT_PACKAGES += \
-    android.hardware.nfc-service.nxp \
-    com.android.nfc_extras
+#PRODUCT_PACKAGES += \
+ #   android.hardware.nfc-service.nxp \
+  #  com.android.nfc_extras
 
 $(foreach sku, CN GL JP, \
     $(eval PRODUCT_COPY_FILES += \
@@ -253,54 +250,54 @@ $(foreach sku, CN GL JP, \
         frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_ODM)/etc/permissions/sku_$(sku)/com.nxp.mifare.xml))
 
 # Overlay
-PRODUCT_PACKAGES += \
-    ApertureOverlayDizi \
-    CarrierConfigOverlayDizi \
-    FrameworkOverlayDizi \
-    LineageDialerOverlayDizi \
-    LineageSDKOverlayDizi \
-    LineageSettingsOverlayDizi \
-    LineageSystemUIOverlayDizi \
-    NfcOverlayDizi \
-    SettingsOverlayDizi \
-    SettingsProviderOverlayDizi \
-    SystemUIOverlayDizi \
-    TelephonyOverlayDizi \
-    WifiOverlayDizi
+#PRODUCT_PACKAGES += \
+ #   ApertureOverlayDizi \
+  #  CarrierConfigOverlayDizi \
+   # FrameworkOverlayDizi \
+   # LineageDialerOverlayDizi \
+   # LineageSDKOverlayDizi \
+   # LineageSettingsOverlayDizi \
+   # LineageSystemUIOverlayDizi \
+   # NfcOverlayDizi \
+   # SettingsOverlayDizi \
+   # SettingsProviderOverlayDizi \
+   # SystemUIOverlayDizi \
+   # TelephonyOverlayDizi \
+   # WifiOverlayDizi
 
-PRODUCT_PACKAGES += \
-    NcmTetheringOverlay
+#PRODUCT_PACKAGES += \
+   # NcmTetheringOverlay
 
 # Partitions
-PRODUCT_PACKAGES += \
-    vendor_bt_firmware_mountpoint \
-    vendor_dsp_mountpoint \
-    vendor_firmware_mnt_mountpoint \
-    vendor_vm-system_mountpoint
+#PRODUCT_PACKAGES += \
+ #   vendor_bt_firmware_mountpoint \
+  #  vendor_dsp_mountpoint \
+   # vendor_firmware_mnt_mountpoint \
+   # vendor_vm-system_mountpoint
 
 # Power
-PRODUCT_PACKAGES += \
-    android.hardware.power-service.lineage-libperfmgr \
-    libqti-perfd-client
+#PRODUCT_PACKAGES += \
+ #   android.hardware.power-service.lineage-libperfmgr \
+  #  libqti-perfd-client
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/power/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # Properties
-PRODUCT_PACKAGES += \
-    dizi_sku_properties
+#PRODUCT_PACKAGES += \
+   # dizi_sku_properties
 
 # QMI
-PRODUCT_PACKAGES += \
-    libvndfwk_detect_jni.qti_vendor # Needed by CNE app
+#PRODUCT_PACKAGES += \
+ #   libvndfwk_detect_jni.qti_vendor # Needed by CNE app
 
 # Sensors
-PRODUCT_PACKAGES += \
-    android.hardware.sensors-service.xiaomi-multihal \
-    sensors.xiaomi.v2
+#PRODUCT_PACKAGES += \
+ #   android.hardware.sensors-service.xiaomi-multihal \
+  #  sensors.xiaomi.v2
 
-PRODUCT_PACKAGES += \
-    sensor-notifier
+#PRODUCT_PACKAGES += \
+ #   sensor-notifier
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
@@ -323,26 +320,26 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/xiaomi
 
 # Telephony
-PRODUCT_PACKAGES += \
-    extphonelib \
-    extphonelib-product \
-    extphonelib.xml \
-    extphonelib_product.xml \
-    ims-ext-common \
-    ims_ext_common.xml \
-    qti-telephony-hidl-wrapper \
-    qti-telephony-hidl-wrapper-prd \
-    qti_telephony_hidl_wrapper.xml \
-    qti_telephony_hidl_wrapper_prd.xml \
-    qti-telephony-utils \
-    qti-telephony-utils-prd \
-    qti_telephony_utils.xml \
-    qti_telephony_utils_prd.xml \
-    telephony-ext \
-    xiaomi-telephony-stub
+#PRODUCT_PACKAGES += \
+ #   extphonelib \
+  #  extphonelib-product \
+   # extphonelib.xml \
+   # extphonelib_product.xml \
+   # ims-ext-common \
+   # ims_ext_common.xml \
+   # qti-telephony-hidl-wrapper \
+   # qti-telephony-hidl-wrapper-prd \
+   # qti_telephony_hidl_wrapper.xml \
+   # qti_telephony_hidl_wrapper_prd.xml \
+   # qti-telephony-utils \
+   # qti-telephony-utils-prd \
+#    qti_telephony_utils.xml \
+ #   qti_telephony_utils_prd.xml \
+  #  telephony-ext \
+   # xiaomi-telephony-stub
 
-PRODUCT_PACKAGES += \
-    qcrilNrDb_vendor
+#PRODUCT_PACKAGES += \
+   # qcrilNrDb_vendor
 
 PRODUCT_BOOT_JARS += \
     telephony-ext \
@@ -359,28 +356,28 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.voip.xml
 
 # Thermal
-PRODUCT_PACKAGES += \
-    android.hardware.thermal-service.qti
+#PRODUCT_PACKAGES += \
+ #   android.hardware.thermal-service.qti
 
 # Touchscreen
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
 
 # Update engine
-PRODUCT_PACKAGES += \
-    update_engine \
-    update_engine_sideload \
-    update_verifier
+#PRODUCT_PACKAGES += \
+ #   update_engine \
+  #  update_engine_sideload \
+   # update_verifier
 
 # USB
-PRODUCT_PACKAGES += \
-    android.hardware.usb-service.qti \
-    android.hardware.usb.gadget-service.qti
+#PRODUCT_PACKAGES += \
+ #   android.hardware.usb-service.qti \
+  #  android.hardware.usb.gadget-service.qti
 
-PRODUCT_PACKAGES += \
-    init.qcom.usb.rc \
-    init.qcom.usb.sh \
-    usb_compositions.conf
+#PRODUCT_PACKAGES += \
+ #   init.qcom.usb.rc \
+  #  init.qcom.usb.sh \
+   # usb_compositions.conf
 
 PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/opensource/usb/etc
@@ -390,9 +387,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml
 
 # Vendor service manager
-PRODUCT_PACKAGES += \
-    vndservice \
-    vndservicemanager
+#PRODUCT_PACKAGES += \
+ #   vndservice \
+  #  vndservicemanager
 
 # Verified boot
 PRODUCT_COPY_FILES += \
@@ -402,25 +399,25 @@ PRODUCT_COPY_FILES += \
 $(call soong_config_set,qti_vibrator,effect_lib,libqtivibratoreffect.xiaomi)
 $(call soong_config_set,qti_vibrator,use_effect_stream,true)
 
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.vibrator.service
+#PRODUCT_PACKAGES += \
+ #   vendor.qti.hardware.vibrator.service
 
 PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
 
 # WiFi - UPDATED FOR WCN6750
-PRODUCT_PACKAGES += \
-    android.hardware.wifi-service \
-    wpa_cli \
-    wpa_supplicant \
-    wpa_supplicant.conf \
-    hostapd \
-    hostapd_cli \
-    libwifi-hal-qcom
+#PRODUCT_PACKAGES += \
+ #   android.hardware.wifi-service \
+  #  wpa_cli \
+   # wpa_supplicant \
+  #  wpa_supplicant.conf \
+   # hostapd \
+   # hostapd_cli \
+   # libwifi-hal-qcom
 
-PRODUCT_PACKAGES += \
-    firmware_wlan_mac.bin_symlink \
-    firmware_WCNSS_qcom_cfg.ini_symlink
+#PRODUCT_PACKAGES += \
+ #   firmware_wlan_mac.bin_symlink \
+  #  firmware_WCNSS_qcom_cfg.ini_symlink
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/qca6750/WCNSS_qcom_cfg.ini \

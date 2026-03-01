@@ -74,6 +74,5 @@
 /vendor/bin/nv_mac u:object_r:vendor_wcnss_service_exec:s0
 
 # Dizi-specific: FM Radio
-/dev/radio0 u:object_r:radio_device:s0
 /vendor/bin/hw/vendor\.qti\.hardware\.fmradio@1\.0-service u:object_r:vendor_fm_radio_exec:s0
 /vendor/firmware/fmradio(/.*)? u:object_r:vendor_firmware_file:s0

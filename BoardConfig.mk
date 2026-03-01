@@ -77,11 +77,6 @@ DEVICE_MANIFEST_FILE := \
 ODM_MANIFEST_SKUS += IN
 ODM_MANIFEST_IN_FILES := $(DEVICE_PATH)/configs/hidl/manifest_nonfc.xml
 
-$(foreach sku, CN GL JP, \
-    $(eval ODM_MANIFEST_SKUS += $(sku)) \
-    $(eval ODM_MANIFEST_$(sku)_FILES += \
-        $(DEVICE_PATH)/configs/hidl/manifest_nfc.xml))
-
 DEVICE_FRAMEWORK_MANIFEST_FILE += $(DEVICE_PATH)/configs/hidl/framework_manifest.xml
 
 # Kernel
@@ -89,17 +84,22 @@ BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 BOARD_RAMDISK_USE_LZ4 := true
 TARGET_NEEDS_DTBOIMAGE := true
 
+#TARGET_KERNEL_SOURCE := kernel/xiaomi/sm7435
+#TARGET_KERNEL_CONFIG := gki_defconfig
+#TARGET_KERNEL_EXT_MODULE_ROOT := kernel/xiaomi/sm7435-modules
+# GKI prebuilt configuration
+BOARD_USES_GENERIC_KERNEL_IMAGE := true
+
+BOARD_PREBUILT_BOOTIMAGE := device/xiaomi/dizi/prebuilt/boot.img
+BOARD_PREBUILT_VENDOR_BOOTIMAGE := device/xiaomi/dizi/prebuilt/vendor_boot.img
+BOARD_PREBUILT_DTBOIMAGE := device/xiaomi/dizi/prebuilt/dtbo.img
+
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_IMAGE_NAME := Image
 
 TARGET_KERNEL_ADDITIONAL_FLAGS := TARGET_PRODUCT=dizi
-TARGET_KERNEL_SOURCE := kernel/xiaomi/sm7435
-TARGET_KERNEL_CONFIG := \
-    gki_defconfig \
-    vendor/parrot_GKI.config \
-    vendor/dizi_GKI.config \
-    vendor/debugfs.config
+
 
 BOARD_BOOT_HEADER_VERSION := 4
 BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOT_HEADER_VERSION)
@@ -118,25 +118,6 @@ BOARD_BOOTCONFIG := \
     androidboot.usbcontroller=a600000.dwc3
 
 # Kernel modules - UPDATED FOR WCN6750
-TARGET_KERNEL_EXT_MODULE_ROOT := kernel/xiaomi/sm7435-modules
-TARGET_KERNEL_EXT_MODULES := \
-	qcom/opensource/mmrm-driver \
-	qcom/opensource/audio-kernel \
-	qcom/opensource/camera-kernel \
-	qcom/opensource/cvp-kernel \
-	qcom/opensource/dataipa/drivers/platform/msm \
-	qcom/opensource/datarmnet/core \
-	qcom/opensource/datarmnet-ext/aps \
-	qcom/opensource/datarmnet-ext/offload \
-	qcom/opensource/datarmnet-ext/shs \
-	qcom/opensource/datarmnet-ext/perf \
-	qcom/opensource/datarmnet-ext/perf_tether \
-	qcom/opensource/datarmnet-ext/sch \
-	qcom/opensource/datarmnet-ext/wlan \
-	qcom/opensource/display-drivers/msm \
-	qcom/opensource/eva-kernel \
-	qcom/opensource/video-driver \
-	qcom/opensource/wlan/qcacld-3.0/.qca6750
 
 BOARD_VENDOR_KERNEL_MODULES_BLOCKLIST_FILE := $(DEVICE_PATH)/modules/dlkm/modules.blocklist
 BOARD_VENDOR_KERNEL_MODULES_LOAD := $(strip $(shell cat $(DEVICE_PATH)/modules/dlkm/modules.load))

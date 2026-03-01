@@ -3,5 +3,4 @@ type vendor_displayfeature_device, dev_type;
 type vendor_fingerprint_device, dev_type;
 
 # Dizi-specific devices
-type radio_device, dev_type;
 type sysfs_xiaomi_hall, sysfs_type, fs_type;
